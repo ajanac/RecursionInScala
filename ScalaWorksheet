@@ -1,0 +1,27 @@
+import scala.annotation.tailrec
+
+// Recursion
+def sum(xs:List[Int]):Int={
+  xs match {
+    case head::tail => head+sum(tail)
+    case Nil => 0
+  }
+}
+
+val list=List(1,2,3,4)
+sum(list)
+
+//Tail Recursion
+def sumOpt(xs:List[Int]):Int={
+  @tailrec
+  def helper(xs:List[Int],acc:Int):Int={
+    xs match{
+      case head::tail=>helper(tail,acc+head)
+      case Nil => acc  
+    }
+  }
+  helper(xs,0)
+}
+
+val list2=List(4,5,1)
+sumOpt(list2)
